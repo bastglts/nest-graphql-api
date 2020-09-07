@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
 @Schema()
-export class PostDocument extends Document {
+export class BookDocument extends Document {
   @Prop()
   authorId: string;
 
@@ -11,9 +11,6 @@ export class PostDocument extends Document {
 
   @Prop()
   description: string;
-
-  @Prop()
-  votes?: number;
 }
 
-export const PostSchema = SchemaFactory.createForClass(PostDocument);
+export const BookSchema = SchemaFactory.createForClass(BookDocument);

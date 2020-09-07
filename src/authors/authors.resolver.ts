@@ -1,30 +1,30 @@
-import { Resolver, Query, Args, ResolveField, Parent } from "@nestjs/graphql";
+import { Resolver, Query, Args, ResolveField, Parent, Mutation } from "@nestjs/graphql";
 import { Author } from "./models/authors.model";
-import { Post } from "../posts/models/posts.model";
+import { Book } from "../books/models/books.model";
 import { AuthorsService } from "./authors.service";
-import { PostsService } from "../posts/posts.service";
+import { BooksService } from "../books/books.service";
 import { AuthorDocument } from "./schemas/authors.schema";
 
 
-@Resolver(of => Author)
+@Resolver(_of => Author)
 export class AuthorsResolver {
   constructor(
     private authorsService: AuthorsService,
-    private postsService: PostsService,
+    private booksService: BooksService,
   ) { }
 
-  @Query(_returns => Author)
+  @Query(returns => Author)
   async author(@Args('id') id: string) {
     return await this.authorsService.findOne(id);
   }
 
-  @Query(_returns => [Author])
+  @Query(returns => [Author])
   async authors() {
     return await this.authorsService.findAll();
   }
 
-  @ResolveField(_returns => [Post])
-  async posts(@Parent() author: AuthorDocument) {
-    return await this.postsService.find(author);
+  @ResolveField(returns => [Book])
+  async books(@Parent() author: AuthorDocument) {
+    return await this.booksService.find(author);
   }
 }

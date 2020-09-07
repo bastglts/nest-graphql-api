@@ -1,5 +1,5 @@
 import { ObjectType, Field } from '@nestjs/graphql';
-import { Post } from 'src/posts/models/posts.model';
+import { Book } from 'src/books/models/books.model';
 
 @ObjectType()
 export class Author {
@@ -9,6 +9,6 @@ export class Author {
   @Field()
   lastName: string;
 
-  @Field(type => [Post])
-  posts: Post[];
+  @Field(type => [Book])
+  books: Book[];
 }

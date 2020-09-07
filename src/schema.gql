@@ -2,16 +2,15 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Post {
+type Book {
   title: String!
   description: String
-  votes: Int
 }
 
 type Author {
   firstName: String!
   lastName: String!
-  posts: [Post!]!
+  books: [Book!]!
 }
 
 type Query {
