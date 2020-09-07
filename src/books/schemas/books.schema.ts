@@ -10,7 +10,7 @@ export class BookDocument extends Document {
   title: string;
 
   @Prop()
-  description: string;
+  description?: string;
 }
 
 export const BookSchema = SchemaFactory.createForClass(BookDocument);

@@ -17,3 +17,18 @@ type Query {
   author(id: String!): Author!
   authors: [Author!]!
 }
+
+type Mutation {
+  addAuthor(newAuthorInput: NewAuthorInput!): Author!
+}
+
+input NewAuthorInput {
+  firstName: String!
+  lastName: String!
+  books: [NewBookInput!]!
+}
+
+input NewBookInput {
+  title: String!
+  description: String
+}

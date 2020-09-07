@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { BookDocument } from './schemas/books.schema';
 import { AuthorDocument } from 'src/authors/schemas/authors.schema';
+import { CreateBookDto } from './dto/create-book.dto';
 
 @Injectable()
 export class BooksService {
@@ -11,5 +12,9 @@ export class BooksService {
   async find(author: AuthorDocument): Promise<BookDocument[]> {
     const { _id } = author;
     return await this.booksModel.find({ authorId: _id }).exec();
+  }
+
+  async create(createBooksDto: CreateBookDto[]): Promise<BookDocument[]> {
+    return await this.booksModel.create(createBooksDto);
   }
 }
